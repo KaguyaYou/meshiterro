@@ -16,8 +16,15 @@ class PostImagesController < ApplicationController
   end
 
   def show
+    @post_image=PostImage.find(params[:id])
   end
 
+  def destroy
+    post_image=PostImage.find(params[:id]) # データ（レコード）を1件取得
+    post_image.destroy # データ（レコード）を削除
+    redirect_to'/post_images' #PostImageの一覧ページへのパス
+  end
+    
   # 投稿データのストロングパラメータ
   private
 
