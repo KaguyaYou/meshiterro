@@ -17,6 +17,7 @@ class PostImagesController < ApplicationController
 
   def show
     @post_image=PostImage.find(params[:id])
+    @post_comment =PostComment.new
   end
 
   def destroy
@@ -24,12 +25,12 @@ class PostImagesController < ApplicationController
     post_image.destroy # データ（レコード）を削除
     redirect_to'/post_images' #PostImageの一覧ページへのパス
   end
-    
+
   # 投稿データのストロングパラメータ
   private
 
   def post_image_params
     params.require(:post_image).permit(:shop_name, :image, :caption)
   end
-
 end
+
